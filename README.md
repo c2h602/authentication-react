@@ -20,11 +20,7 @@
    ```js
    npm i
    ```
-4. Подключить библиотеку Mantine:
-    ```js
-   npm install @mantine/core @mantine/hooks @mantine/form
-   ```
-5. Запусить проект
+4. Запусить проект
    ```js
    npm run dev
    ```
