@@ -9,6 +9,7 @@ import {
 import { ConfirmationCodeForm } from "./Components/ConfirmationCodeForm.tsx";
 import { RegistrationForm } from "./Components/RegistrationForm";
 import { AuthorizationForm } from "./Components/AuthorizationForm.tsx";
+import { NotFoundPage } from './Components/NotFoundPage/NotFoundPage.tsx';
 
 const router = createBrowserRouter([
     {
@@ -28,8 +29,10 @@ const router = createBrowserRouter([
         element: <AuthorizationForm />,
         index: true
     },
-
-
+    {
+        path: "*",
+        element: <NotFoundPage/>,
+    }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

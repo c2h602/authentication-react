@@ -32,23 +32,20 @@ export default function App() {
     navigate('/auth')
   };
 
+  useEffect(() => {
+    navigate('/auth');
+  }, [navigate]);
+
   return (
     <MantineProvider>
-      {user ? (
-        registered ? (
-          <div style={{ textAlign: 'center', marginTop: '20%' }}>
-            <h1>Welcome, {user.name}!</h1>
-            <p>You are logged in as {user.email}</p>
-            <button type="submit" onClick={handleLogout}>Logout</button>
-          </div>
-        ) : (
-          <div style={{ textAlign: 'center', marginTop: '20%' }}>
-            <p>You are logged in as {user.email}</p>
-            <button type="submit" onClick={handleLogout}>Logout</button>
-          </div>
-        )
+       {user ? (
+        <div style={{ textAlign: 'center', marginTop: '20%' }}>
+          <h1>Welcome, {username}!</h1>
+          <p>You are logged in as {username}</p>
+          <button type="submit" onClick={handleLogout}>Logout</button>
+        </div>
       ) : (
-        <AuthorizationForm/>
+        <AuthorizationForm />
       )}
     </MantineProvider>
   );

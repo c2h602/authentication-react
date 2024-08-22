@@ -33,11 +33,13 @@ export function RegistrationForm(props: PaperProps) {
         },
     });
 
-    const validateRepeatPasswords = (e) => {
-        form.setFieldValue('repeat_password', e.currentTarget.value)
-        if (form.values.password !== form.values.repeat_password)
-            form.errors["repeat_password"] = "Passwords mismatch"
-    }
+    const validateRepeatPasswords = () => {
+        if (form.values.password !== form.values.repeat_password) {
+            form.setErrors({ repeat_password: "Passwords mismatch" });
+        } else {
+            form.setErrors({ repeat_password: null });
+        }
+    };
 
     const handleSubmit = async (values: typeof form.values) => {
         setLoading(true);
@@ -108,14 +110,15 @@ export function RegistrationForm(props: PaperProps) {
                             label="Repeat password"
                             placeholder="Repeat password"
                             value={form.values.repeat_password}
-                            onChange={(e) =>validateRepeatPasswords(e)}
+                            onChange={(e) => form.setFieldValue('repeat_password', e.currentTarget.value)}
+                            onBlur={validateRepeatPasswords}
                             error={form.errors.repeat_password}
                             radius="md"
                         />
                     </Stack>
 
                     <Group justify="space-between" mt="xl">
-                        <Anchor component="button" type="button" c="dimmed" onClick={() => navigate('/auth')} size="xs">
+                        <Anchor component="button" type="button" c="dimmed" onClick={() => navigate('/')} size="xs">
                             Already have an account? Login
                         </Anchor>
                         <Button type="submit" radius="xl" loading={loading}>
